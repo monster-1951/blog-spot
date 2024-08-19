@@ -8,7 +8,6 @@ export const FetchPosts = async () => {
 
   try {
     const AllPosts = await PostModel.find().lean().exec();
-      // console.log(AllPosts,"🍻AllPosts");
     return AllPosts;
   } catch (error) {
     console.log("Error in Fetching the posts", error, "😭");

@@ -1,17 +1,14 @@
 "use client";
-import { signOut, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import React from "react";
 import { Input } from "../ui/input";
 import { FiEdit } from "react-icons/fi";
-import { FaUserCircle } from "react-icons/fa";
 import { sessionUser } from "@/types/session";
 import UserProfile from "./UserProfile";
 import { Button } from "../ui/button";
 import Link from "next/link";
-import { IoIosNotificationsOutline } from "react-icons/io";
 import { CiShare2 } from "react-icons/ci";
 import NotificationBell from "./NotificationBell";
-import PublishAlertDialog from "./PublishAlert";
 
 interface HeaderProps {
   HomeHeader?: boolean;
@@ -106,13 +103,6 @@ const Header = ({ HomeHeader, CreatePostHeader }: HeaderProps) => {
             <Button>Login</Button>
           </Link>
         )}
-        {/* <Button
-          onClick={() => {
-            signOut();
-          }}
-        >
-          Log-Out
-        </Button> */}
       </div>
     </nav>
   );

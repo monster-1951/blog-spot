@@ -1,7 +1,7 @@
 "use client";
 import { LikePost, UnLikePost } from "@/actions/LikePost";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React from "react";
 
 interface LikeTheBlogProps {
   Liked: boolean;
@@ -10,28 +10,20 @@ interface LikeTheBlogProps {
 }
 
 const LikeTheBlog = ({ Liked, _id, postId }: LikeTheBlogProps) => {
-  const router = useRouter()
+  const router = useRouter();
   let Likked = Liked;
-  // fill-red-600 outline-none
-  // console.log(Liked ? `${_id} liked ${postId}` : `${_id} unliked ${postId}`);
-
+  
   const like = async () => {
     await LikePost(postId, _id);
-    router.refresh()
+    router.refresh();
   };
 
   const unLike = async () => {
     await UnLikePost(postId, _id);
-    router.refresh()
+    router.refresh();
   };
 
-  // if (Liked) {
-  //   like();
-  // }
 
-  // if(!Liked){
-  //   unLike()
-  // }
   return (
     <div>
       <svg
@@ -42,8 +34,8 @@ const LikeTheBlog = ({ Liked, _id, postId }: LikeTheBlogProps) => {
         fill="none"
         stroke="currentColor"
         strokeWidth={Likked ? 0 : 2}
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
         className={`feather feather-heart ${
           Likked ? "fill-red-600 outline-none" : ""
         }`}

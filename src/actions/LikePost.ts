@@ -26,7 +26,7 @@ export const UnLikePost = async (postId: string, UnLikedUser: string) => {
       },
       { $pull: { likes: UnLikedUser } }
     );
-    
+
     console.log(post, "unliked");
   } catch (error) {
     console.log("Can't unlike please try again later", error);

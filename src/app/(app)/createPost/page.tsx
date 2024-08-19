@@ -2,21 +2,14 @@
 import { usePostContext } from '@/context/postProvider';
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
-import 'react-quill/dist/quill.bubble.css'; // Import the Bubble theme CSS
-
-// Dynamically import ReactQuill to avoid SSR issues
+import 'react-quill/dist/quill.bubble.css';
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
 const WritePost = () => {
   const posst = usePostContext()
-  // console.log(posst,"🥲posst")
   const [Title, setTitle] = useState('');
   const [Content, setContent] = useState('');
-  // useEffect(() => {
-  //   posst.setPost(post)
-  //   console.log(posst.post)
-  // }
-  // )
+
   return (
     <div className='flex flex-col space-y-10 md:w-[50%] mx-auto'>
      <ReactQuill 
@@ -27,7 +20,7 @@ const WritePost = () => {
         console.log(posst.post)
       }
       } 
-      theme="bubble" // Use the Bubble theme
+      theme="bubble" 
       placeholder="Title"
      
     />
@@ -39,7 +32,7 @@ const WritePost = () => {
         console.log(posst.post)
       }
       } 
-      theme="bubble" // Use the Bubble theme
+      theme="bubble" 
       placeholder="Tell your story"
     />
     </div>

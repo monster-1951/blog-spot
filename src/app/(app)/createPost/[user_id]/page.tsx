@@ -19,12 +19,11 @@ import axios, { AxiosError } from "axios";
 import { useToast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";
 import { ApiResponse } from "@/types/ApiResponse";
-import { Textarea } from "@/components/ui/textarea";
 import { usePostContext } from "@/context/postProvider";
 import { useRef, useState } from "react";
 import Image from "next/image";
-import removeIcon from "@/components/custom/removeIcon";
 import { X } from "lucide-react";
+import { htmlToText } from "html-to-text";
 const CreatePost = ({ params }: { params: { user_id: string } }) => {
   const [base64, setBase64] = useState<
     string | number | readonly string[] | undefined
@@ -62,14 +61,6 @@ const CreatePost = ({ params }: { params: { user_id: string } }) => {
       console.log(axiosError);
     }
   }
-
-  const htmlToText = (htmlString: string): string => {
-    const tempElement = document.createElement("div");
-    tempElement.innerHTML = htmlString;
-
-    // Extract the plain text, with formatting evaluated
-    return tempElement.textContent || tempElement.innerText || "";
-  };
 
   const convertImageToBase64 = (file: File): Promise<string> => {
     return new Promise((resolve, reject) => {
@@ -113,46 +104,6 @@ const CreatePost = ({ params }: { params: { user_id: string } }) => {
       <div className="p-3 md:w-[50%] mx-auto">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-            {/* postedBy */}
-            {/* <FormField
-              control={form.control}
-              name="postedBy"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>PostedBy</FormLabel>
-                  <FormControl>
-                    <Input {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            /> */}
-            {/* Hidden Title */}
-            {/* <FormField
-              control={form.control}
-              name="title"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Input {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            /> */}
-            {/* Hidden Content */}
-            {/* <FormField
-              control={form.control}
-              name="content"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Input {...field} className="" />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            /> */}
             {/* Title div */}
             <div className="p-3 h-20 text-2xl font-serif">
               {htmlToText(post.post.title)}
@@ -196,25 +147,7 @@ const CreatePost = ({ params }: { params: { user_id: string } }) => {
                 />
               </div>
             )}
-            {/* 
-<Button
-                  variant={"outline"}
-                  type="button"
-                  onClick={() => {
-                    setpreview(null);
-                  }}
-                >
-                  Remove Image
-                </Button> */}
-
-            {/* <Button
-                onClick={() => {
-                  fileInputRef.current?.click();
-                }}
-                className="w-fit mx-auto"
-              >
-                {preview ? "Change Image" : "Select an Image"}
-              </Button> */}
+           
             <div className="border flex justify-between">
               {preview ? (
                 <>
@@ -234,22 +167,21 @@ const CreatePost = ({ params }: { params: { user_id: string } }) => {
                       setpreview(null);
                     }}
                   >
-                   <X/>
+                    <X />
                   </Button>
                 </>
               ) : (
-               <>
-                <Button
-                  type="button"
-                  onClick={() => {
-                    fileInputRef.current?.click();
-                  }}
-                  className="w-fit mx-auto"
-                >
-                  Select an Image
-                </Button>
-                
-               </>
+                <>
+                  <Button
+                    type="button"
+                    onClick={() => {
+                      fileInputRef.current?.click();
+                    }}
+                    className="w-fit mx-auto"
+                  >
+                    Select an Image
+                  </Button>
+                </>
               )}
             </div>
             {/* media  */}
