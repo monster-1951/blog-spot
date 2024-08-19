@@ -1,4 +1,5 @@
 export const categories = [
+  "Fashion",
   "Technology",
   "Business",
   "Lifestyle",

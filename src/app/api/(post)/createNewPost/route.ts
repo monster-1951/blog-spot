@@ -1,6 +1,7 @@
 import dbConnect from "@/database/ConnectDB";
 import PostModel from "@/database/models/post.model";
 import UserModel from "@/database/models/user.model";
+import { revalidatePath } from "next/cache";
 
 export async function POST(request: Request) {
   await dbConnect();
@@ -26,7 +27,7 @@ export async function POST(request: Request) {
     );
 
     console.log(updateUser,"user updated")
-
+    revalidatePath("/")
     return Response.json(
       {
         success: true,
