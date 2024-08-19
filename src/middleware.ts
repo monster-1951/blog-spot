@@ -5,7 +5,7 @@ export { default } from "next-auth/middleware";
 
 // See "Matching Paths" below to learn more
 export const config = {
-  matcher: ["/register", "/login", "/", "/Profile/:path*"],
+  matcher: ["/register", "/login", "/", ],
 };
 
 // This function can be marked `async` if using `await` inside
