@@ -83,10 +83,7 @@ const ProfileForm = () => {
   async function onSubmit(values: z.infer<typeof editProfileSchema>) {
     values.media = base64 as string;
     try {
-      const response = await axios.post(
-        "api/update-user",
-        values
-      );
+      const response = await axios.post("/api/update-user", values);
       console.log("👍", values, "This is the data from onSubmit function");
 
       toast({
