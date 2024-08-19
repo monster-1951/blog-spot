@@ -46,6 +46,8 @@ export const authOptions: NextAuthOptions = {
         token.FullName = user.FullName;
         token.Email = user.Email;
         token.MobileNumber = user.MobileNumber;
+        token.DateOfBirth =  user.DateOfBirth;
+        token.Gender = user.Gender;
       }
       return token;
     },
@@ -56,6 +58,8 @@ export const authOptions: NextAuthOptions = {
         session.user.FullName = token.FullName;
         session.user.Email = token.Email;
         session.user.MobileNumber = token.MobileNumber;
+        session.user.DateOfBirth = token.DateOfBirth;
+        session.user.Gender = token.Gender;
       }
       return session;
     },

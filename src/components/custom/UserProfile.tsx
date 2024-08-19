@@ -15,6 +15,7 @@ import { Button } from "../ui/button";
 import { signOut } from "next-auth/react";
 import UserIcon from "./UserIcon";
 import Link from "next/link";
+import Image from "next/image";
 
 
 
@@ -52,12 +53,12 @@ const UserProfile = ({ id, session,uname ,menuItems}: UserProfileProps) => {
       <DropdownMenu>
         <DropdownMenuTrigger className="outline-none">
           {session && dp ? (
-            <img
-              src={`data:image/jpeg;base64,${dp}`}
+            <Image
+              src={dp}
               alt="dp"
-              width={40}
-              height={40}
-              className="rounded-full"
+              width={50}
+              height={50}
+              className="rounded-xl w20"
             />
           ) : (
             <div className="w-fit">

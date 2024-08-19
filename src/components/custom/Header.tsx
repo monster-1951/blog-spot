@@ -20,7 +20,7 @@ const Header = ({ HomeHeader, CreatePostHeader }: HeaderProps) => {
   // const id = user._id
   const menuItems = [
     { link: `/createPost/`, value: "Write" },
-    { link: `/`, value: "Profile" },
+    { link: `/Profile/${user?._id}`, value: "Profile" },
     { link: `/`, value: "Library" },
     { link: `/`, value: "Stories" },
   ];
