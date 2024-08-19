@@ -84,7 +84,7 @@ const ProfileForm = () => {
     values.media = base64 as string;
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/update-user",
+        "api/update-user",
         values
       );
       console.log("👍", values, "This is the data from onSubmit function");
@@ -97,7 +97,7 @@ const ProfileForm = () => {
     } catch (error) {
       console.log("👍", error, "Error in updating ❤️");
       toast({
-        title: "Sign Up Failed",
+        title: "Failed to Update the user details",
         variant: "destructive",
       });
     }
