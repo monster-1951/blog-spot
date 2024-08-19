@@ -1,6 +1,7 @@
 "use server";
 import dbConnect from "@/database/ConnectDB";
 import PostModel from "@/database/models/post.model";
+import { revalidatePath } from "next/cache";
 
 export const LikePost = async (postId: string, LikedUser: string) => {
   await dbConnect();
@@ -11,6 +12,7 @@ export const LikePost = async (postId: string, LikedUser: string) => {
       { $push: { likes: LikedUser } }
     );
     console.log(post, "Liked");
+    revalidatePath("/")
   } catch (error) {
     console.log("Can't like please try again later", error);
   }
@@ -28,15 +30,8 @@ export const UnLikePost = async (postId: string, UnLikedUser: string) => {
     );
 
     console.log(post, "unliked");
+    revalidatePath("/")
   } catch (error) {
     console.log("Can't unlike please try again later", error);
   }
-  const post = await PostModel.updateOne(
-    {
-      _id: UnLikedUser,
-    },
-    { $pull: { likes: UnLikedUser } }
-  );
-
-  console.log(post, "unliked");
 };

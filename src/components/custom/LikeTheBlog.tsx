@@ -1,5 +1,6 @@
 "use client";
 import { LikePost, UnLikePost } from "@/actions/LikePost";
+import { revalidatePath } from "next/cache";
 import { useRouter } from "next/navigation";
 import React from "react";
 
@@ -15,12 +16,14 @@ const LikeTheBlog = ({ Liked, _id, postId }: LikeTheBlogProps) => {
   
   const like = async () => {
     await LikePost(postId, _id);
-    router.refresh();
+    // router.refresh();
+    // revalidatePath("/")
   };
 
   const unLike = async () => {
     await UnLikePost(postId, _id);
-    router.refresh();
+    // router.refresh();
+    // revalidatePath("/")
   };
 
 

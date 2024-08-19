@@ -4,6 +4,7 @@ import HomeOfPosts, { post } from "@/components/custom/HomeOfPosts";
 import mongoose from 'mongoose';
 
 
+export const revalidate =  1000// revalidate at most every hour
 export default async function Home() {
   const { ObjectId } = mongoose.Types;
   const transformPostData = (data: any[]): post[] => {
