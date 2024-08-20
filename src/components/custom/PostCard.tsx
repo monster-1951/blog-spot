@@ -45,7 +45,7 @@ const PostCard = ({
 }: PostCardProps) => {
   const { data: session } = useSession();
   const user = session?.user;
-  console.log(_id,"ID of this post")
+  console.log(_id, "ID of this post");
   return (
     <Card className="p-3 w-fit h-fit">
       <CardHeader className="p-5">
@@ -92,11 +92,10 @@ const PostCard = ({
               <EditIcon />
             </Button>
           </Link>
-          
-            <Button className="outline-none w-fit" variant={"outline"}>
-              <DeletePostDialog _id={_id}/>
-            </Button>
-       
+
+          <Button className="outline-none w-fit" variant={"outline"}>
+            <DeletePostDialog _id={_id} />
+          </Button>
         </div>
       </CardFooter>
     </Card>

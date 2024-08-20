@@ -32,7 +32,7 @@ const PostView = async ({ params }: { params: { postId: string } }) => {
     
   return (
     <>
-      {/* <Header HomeHeader/> */}
+      <Header HomeHeader/>
       <div className="lg:w-[60%] w-full space-y-5 mx-auto shadow py-5 h-">
         {/* Header */}
         <div className="p-2 w-fit mx-auto">

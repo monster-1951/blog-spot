@@ -24,6 +24,7 @@ import { useRef, useState } from "react";
 import Image from "next/image";
 import { X } from "lucide-react";
 import { htmlToText } from "html-to-text";
+import Header from "@/components/custom/Header";
 const CreatePost = ({ params }: { params: { user_id: string } }) => {
   const [base64, setBase64] = useState<
     string | number | readonly string[] | undefined
@@ -103,7 +104,7 @@ const CreatePost = ({ params }: { params: { user_id: string } }) => {
   };
 
   return (
-    <>
+    <><Header CreatePostHeader/>
       <div className="p-3 md:w-[50%] mx-auto">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">

@@ -19,6 +19,7 @@ const Header = ({ HomeHeader, CreatePostHeader }: HeaderProps) => {
   const user: sessionUser = session?.user;
   // const id = user._id
   const menuItems = [
+    { link: `/`, value: "Home" },
     { link: `/createPost/`, value: "Write" },
     { link: `/Profile/${user?._id}`, value: "Profile" },
   ];
@@ -32,13 +33,15 @@ const Header = ({ HomeHeader, CreatePostHeader }: HeaderProps) => {
       {/* Medium text */}
 
       <div className="flex">
-        <h1
-          className={`font-serif p-2 font-extrabold text-xl sm:text-3xl my-auto ${
-            CreatePostHeader && "hidden sm:inline"
-          }`}
-        >
-          Medium
-        </h1>
+        <Link href={"/"} className="my-auto">
+          <h1
+            className={`font-serif p-2 font-extrabold text-xl sm:text-3xl my-auto ${
+              CreatePostHeader && "hidden sm:inline"
+            }`}
+          >
+            Medium
+          </h1>
+        </Link>
         {HomeHeader && (
           <div className="p-2 h-full flex flex-col justify-center">
             {/* Search Bar */}
@@ -51,11 +54,11 @@ const Header = ({ HomeHeader, CreatePostHeader }: HeaderProps) => {
         )}
         {/* draft in whose account */}
         {CreatePostHeader && (
-          <div className="sm:mt-5 mt-3">
+          <div className=" my-auto">
             <p
-              className={`sm:align-baseline sm:font-light font-bold text-lg sm:text-sm `}
+              className={`sm:align-baseline font-light text-lg `}
             >
-              Draft in {session?.user.UserName}
+              <span className="font-bold">Draft in </span><span className="text-sm">{session?.user.UserName}</span>
             </p>
           </div>
         )}
@@ -76,7 +79,7 @@ const Header = ({ HomeHeader, CreatePostHeader }: HeaderProps) => {
         {CreatePostHeader && (
           <>
             {/* Publish Button */}
-            <Link href={`/createPost/${user?._id}`}>
+            <Link href={`/createPost/${user?._id}`} className="my-auto">
               <Button className="rounded-full bg-green-600 h-6" type="submit">
                 Publish
               </Button>
