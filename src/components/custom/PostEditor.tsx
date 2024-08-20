@@ -18,7 +18,7 @@ const PostEditor = ({ title, content ,postId}: PostEditorProps) => {
   useEffect(() => {
     posst.setPost({title:title,content:content,id:postId})
     console.log(posst)
-  }, []);
+  },[Title,Content]);
   console.log(posst)
   return (
     <div className="flex flex-col space-y-10 md:w-[50%] mx-auto">
