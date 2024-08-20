@@ -14,3 +14,16 @@ export const FetchPosts = async () => {
     return error 
   }
 };
+
+export const FetchPost = async (_id:string) => {
+  await dbConnect();
+
+  try {
+    const Post = await PostModel.findOne({_id:_id});
+    return Post;
+  } catch (error) {
+    console.log("Error in Fetching the posts", error, "😭");
+    return error 
+  }
+}
+

@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import Selectt from "@/components/custom/Selectt";
-import { categories } from "../../../../../categories";
+import { categories } from "../../../../../../categories";
 import axios, { AxiosError } from "axios";
 import { useToast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";
@@ -42,11 +42,13 @@ const CreatePost = ({ params }: { params: { user_id: string } }) => {
       content: post.post.content,
       category: "",
       media: "",
+      id:post.post.id
     },
   });
-  console.log(params.user_id);
+  console.log(post);
   async function onSubmit(values: z.infer<typeof createPostSchema>) {
     values.media = base64 as string;
+    (values.id = post.post.id);
     console.log(values);
     try {
       const response = await axios.post("/api/createNewPost", values);
@@ -55,7 +57,8 @@ const CreatePost = ({ params }: { params: { user_id: string } }) => {
         title: "Success",
         description: response.data.message,
       });
-      router.replace(`/`);
+      if(post.post.id)router.replace(`/Profile/${params.user_id}`)
+        else  router.replace(`/`);
     } catch (error) {
       const axiosError = error as AxiosError<ApiResponse>;
       console.log(axiosError);
@@ -142,12 +145,12 @@ const CreatePost = ({ params }: { params: { user_id: string } }) => {
                   width={500}
                   src={preview}
                   alt="Preview"
-                  className=" object-cover mx-auto"
+                  className=" w-fit mx-auto"
                   height={500}
                 />
               </div>
             )}
-           
+
             <div className="border flex justify-between">
               {preview ? (
                 <>

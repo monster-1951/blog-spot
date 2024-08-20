@@ -8,6 +8,7 @@ export const createPostSchema = z.object({
     .min(10),
   category: z.string({ required_error: "Category?" }),
   media: z.string().optional(),
-  mediaInput:z.string().optional()
+  mediaInput:z.string().optional(),
+  id:z.string().optional()
 });
 

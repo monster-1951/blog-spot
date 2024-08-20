@@ -21,8 +21,6 @@ const Header = ({ HomeHeader, CreatePostHeader }: HeaderProps) => {
   const menuItems = [
     { link: `/createPost/`, value: "Write" },
     { link: `/Profile/${user?._id}`, value: "Profile" },
-    { link: `/`, value: "Library" },
-    { link: `/`, value: "Stories" },
   ];
   console.log(user);
   return (
@@ -42,12 +40,12 @@ const Header = ({ HomeHeader, CreatePostHeader }: HeaderProps) => {
           Medium
         </h1>
         {HomeHeader && (
-          <div className="p-2">
+          <div className="p-2 h-full flex flex-col justify-center">
             {/* Search Bar */}
             <Input
               placeholder="Search"
               type="search"
-              className="outline-none sm:w-60 bg-gray-50 sm:rounded-full w-24 my-auto sm:mt-2"
+              className="outline-none sm:w-60 bg-gray-50 sm:rounded-full w-24 my-auto h-fit "
             />
           </div>
         )}

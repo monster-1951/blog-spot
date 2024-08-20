@@ -2,6 +2,7 @@
 import { createContext,useContext,useState } from "react";
 
 interface post{
+  id?:string
   title:string,
   content:string,
 }
@@ -12,6 +13,7 @@ interface postContextInterface{
   }
   
   const defaultPost :post = {
+    id:"",
     title:"",
     content:"",
   }
