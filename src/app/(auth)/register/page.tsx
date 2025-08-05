@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -68,6 +67,7 @@ const Register = () => {
     };
     checkUserNameUnique();
   }, [username]);
+
   async function onSubmit(values: z.infer<typeof registerSchema>) {
     setSubmitting(true);
     try {
@@ -165,7 +165,12 @@ const Register = () => {
               <FormItem>
                 <FormLabel>Gender</FormLabel>
                 <FormControl>
-                  <Selectt value={field.value} onChange={field.onChange} options={["Male", "Female", "Prefer not to say"]} placeHolder="Gender" />
+                  <Selectt
+                    value={field.value}
+                    onChange={field.onChange}
+                    options={["Male", "Female", "Prefer not to say"]}
+                    placeHolder="Gender"
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>

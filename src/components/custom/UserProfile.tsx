@@ -19,10 +19,7 @@ import Image from "next/image";
 
 
 
-interface menuItem{
-  link:string,
-  value:string
-}
+
 
 
 
@@ -33,6 +30,10 @@ interface UserProfileProps {
   menuItems:menuItem[]
 }
 
+interface menuItem{
+  link:string,
+  value:string
+}
 
 
 
